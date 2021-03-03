@@ -6,6 +6,7 @@ mvn -Dbrowser='browserName from DriverSingleton' -Denvironment='file.properties 
 # Example:
 mvn -Dbrowser=chrome -Denvironment=user -Dsurefire.suiteXmlFiles=src\test\resources\testng-all.xml clean test
 
+# Test Cases:
 User select watches using filter's and buys it
 
 1. Launch site "https://luch.by/en/"
