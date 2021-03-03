@@ -1,8 +1,8 @@
 # com.expertsoft.luch
 
-Run from command line: 
+#Run from command line: 
 mvn -Dbrowser='browserName from DriverSingleton' -Denvironment='file.properties from resources' -Dsurefire.suiteXmlFiles=src\test\resources\'testsuite.xml' clean test
-Example:
+#Example:
 mvn -Dbrowser=chrome -Denvironment=user -Dsurefire.suiteXmlFiles=src\test\resources\testng-all.xml clean test
 
 User select watches using filter's and buys it
