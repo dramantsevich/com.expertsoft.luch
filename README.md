@@ -8,7 +8,7 @@ mvn -Dbrowser=chrome -Denvironment=user -Dsurefire.suiteXmlFiles=src\test\resour
 
 # Test Cases:
 
-ID:1.Positive TC.User select wathces and click "One click order"
+ID:1.User select wathces and click "One click order" and see "Your message was sent successfully"
 
 1. Launch site "https://luch.by/en/"
 2. Click "One click order" on the any watches
@@ -18,7 +18,7 @@ ID:1.Positive TC.User select wathces and click "One click order"
 6. Click "Send form"
 7. Check popup "Your message was sent successfully"
 
-ID:2.Negative TC.User select wathces and click "One click order"
+ID:2.User select wathces and click "One click order" enter only field "Your Name" and see "Please fill out this field."
 
 1. Launch site "https://luch.by/en/"
 2. Click "One click order" on the any watches
@@ -26,13 +26,20 @@ ID:2.Negative TC.User select wathces and click "One click order"
 4. Click "Send form"
 5. Check popup "Please fill out this field."
 
-ID:3.Negative TC.User select wathces and click "One click order"
+ID:3.User select wathces and click "One click order" enter only field "Phone" and see "Please fill out this field."
 
 1. Launch site "https://luch.by/en/"
 2. Click "One click order" on the any watches
 3. Enter value "testphonenumber" to field "Phone"
 4. Click "Send form"
 5. Check popup "Please fill out this field."
+
+ID:4.User enter product page "https://luch.by/en/kollektsii/defender/77431556/" and click "Add to cart"
+
+1. Launch site "https://luch.by/en/kollektsii/defender/77431556/"
+2. Click "Add to cart"
+3. Launch cart page
+4. Check is product in cart
 
 User select watches using filter's and buys it
 
