@@ -41,6 +41,18 @@ ID:Product test 2-1.User enter product page "https://luch.by/en/kollektsii/defen
 3. Launch cart page
 4. Check is product in cart
 
+ID:Order test 3-1.User order a product
+
+1. Repeat steps on Product test 2-1
+2. Enter value "Dzmitrytest" to field "Name and Surname"
+3. Enter value "testphonenumber" to field "Telephone"
+4. Enter value "test@test.by*" to field "E-mail"
+5. Enter value "Minsk" to field "City"
+6. Select "Pickup in Minsk" on the "Delivery service"
+7. Select "Credit card & Apple Pay" on the "Select payment System"
+8. Click "Complete order"
+9. Check payment blank
+
 User select watches using filter's and buys it
 
 1. Launch site "https://luch.by/en/"
