@@ -8,7 +8,7 @@ mvn -Dbrowser=chrome -Denvironment=user -Dsurefire.suiteXmlFiles=src\test\resour
 
 # Test Cases:
 
-ID:1.User select wathces and click "One click order" and see "Your message was sent successfully"
+ID:One click order test 1-1.User select wathces and click "One click order" and see "Your message was sent successfully"
 
 1. Launch site "https://luch.by/en/"
 2. Click "One click order" on the any watches
@@ -18,7 +18,7 @@ ID:1.User select wathces and click "One click order" and see "Your message was s
 6. Click "Send form"
 7. Check popup "Your message was sent successfully"
 
-ID:2.User select wathces and click "One click order" enter only field "Your Name" and see "Please fill out this field."
+ID:One click order test 1-2.User select wathces and click "One click order" enter only field "Your Name" and see "Please fill out this field."
 
 1. Launch site "https://luch.by/en/"
 2. Click "One click order" on the any watches
@@ -26,7 +26,7 @@ ID:2.User select wathces and click "One click order" enter only field "Your Name
 4. Click "Send form"
 5. Check popup "Please fill out this field."
 
-ID:3.User select wathces and click "One click order" enter only field "Phone" and see "Please fill out this field."
+ID:One click order test 1-3.User select wathces and click "One click order" enter only field "Phone" and see "Please fill out this field."
 
 1. Launch site "https://luch.by/en/"
 2. Click "One click order" on the any watches
@@ -34,7 +34,7 @@ ID:3.User select wathces and click "One click order" enter only field "Phone" an
 4. Click "Send form"
 5. Check popup "Please fill out this field."
 
-ID:4.User enter product page "https://luch.by/en/kollektsii/defender/77431556/" and click "Add to cart"
+ID:Product test 2-1.User enter product page "https://luch.by/en/kollektsii/defender/77431556/" and click "Add to cart"
 
 1. Launch site "https://luch.by/en/kollektsii/defender/77431556/"
 2. Click "Add to cart"
