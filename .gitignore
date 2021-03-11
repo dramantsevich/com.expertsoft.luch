@@ -18,4 +18,4 @@ test-output/
 *.iml
 
 # allure-results
-.allure-results/
+allure-results/
