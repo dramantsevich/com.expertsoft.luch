@@ -16,3 +16,6 @@ test-output/
 # Idea
 .idea/
 *.iml
+
+# allure-results
+.allure-results/
