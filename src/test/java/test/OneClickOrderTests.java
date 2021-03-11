@@ -9,7 +9,7 @@ import service.UserCreator;
 public class BuyWatchesTests extends CommonConditions{
 
     @Test(description = "User select wathces and click \"One click order\"")
-    public void oneClickOrderTest() throws Throwable {
+    public void checkOneClickOrderTest() throws Throwable {
         User testUser = UserCreator.userForOnceClickOrder();
         MainPage mainPage = new MainPage(driver)
                 .openPage()
@@ -19,4 +19,6 @@ public class BuyWatchesTests extends CommonConditions{
 
         Assert.assertTrue(mainPage.isFormOneClickOrderSuccessfullMessageVisible(), "form of one click order is successfully work");
     }
+
+
 }
