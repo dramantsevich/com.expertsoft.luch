@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
 import java.net.URI;
 
 public class DriverSingleton {
@@ -14,7 +15,7 @@ public class DriverSingleton {
 
     private DriverSingleton(){ }
 
-    public static WebDriver getDriver() throws Throwable {
+    public static WebDriver getDriver() throws Throwable{
         if(null == driver){
             switch (System.getProperty("browser")){
                 case "chrome-selenoid":{

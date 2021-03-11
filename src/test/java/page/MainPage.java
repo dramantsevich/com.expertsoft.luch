@@ -4,12 +4,13 @@ import model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MainPage extends AbstarctPage{
+public class MainPage extends AbstractPageWithStaticURL{
     private final String BASE_URL = "https://luch.by/en/";
     private final Logger logger = LogManager.getRootLogger();
 
@@ -48,7 +49,7 @@ public class MainPage extends AbstarctPage{
                 .click();
         waitforVisibility(oneClickOrderPopup);
         logger.info("Click to 'One click order' button");
-        return new MainPage(driver);
+        return this;
     }
 
     public MainPage inputFieldsInOneClickOrderPopup(User user){
@@ -59,17 +60,45 @@ public class MainPage extends AbstarctPage{
                 "userName:[" + user.getUsername() +
                 "], userPhone:[" + user.getPhone() +
                 "], userEmail:[" + user.getEmail() + "]");
-        return new MainPage(driver);
+        return this;
+    }
+
+    public MainPage inputClientPhoneField(User user){
+        clientPhoneInput.sendKeys(user.getPhone());
+        logger.info("Filled client phone input: [" + user.getPhone() +"]");
+        return this;
+    }
+
+    public MainPage inputClientNameField(User user) throws Throwable {
+        waitforVisibility(clientNameInput);
+        clientNameInput.sendKeys(user.getUsername());
+        logger.info("Filled client name input: [" + user.getUsername() +"]");
+        return this;
     }
 
     public MainPage submitFormOneClickOrder() {
         submitButtonOneClickOrderForm.click();
         logger.info("Click submit button in 'One click order' form");
-        return new MainPage(driver);
+        return this;
     }
 
     public boolean isFormOneClickOrderSuccessfullMessageVisible() throws Throwable {
         waitforVisibility(formOneClickOrderSuccessfullMessage);
+        logger.info("User see 'One click order' successful message");
         return formOneClickOrderSuccessfullMessage.isDisplayed();
+    }
+
+    public boolean isRequiredClientNameInputWillPopupError(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;", clientNameInput);
+        logger.info("User see 'Please fill out this field.'");
+        return isRequired;
+    }
+
+    public boolean isRequiredClientPhoneInputWillPopupError(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;", clientPhoneInput);
+        logger.info("User see 'Please fill out this field.'");
+        return isRequired;
     }
 }

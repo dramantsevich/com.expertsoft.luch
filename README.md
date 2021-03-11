@@ -1,10 +1,13 @@
 # com.expertsoft.luch
 
-# Run from command line: 
+# Run from command line:
 mvn -Dbrowser='browserName from DriverSingleton' -Denvironment='file.properties from resources' -Dsurefire.suiteXmlFiles=src\test\resources\'testsuite.xml' clean test
 
 # Example:
 mvn -Dbrowser=chrome -Denvironment=user -Dsurefire.suiteXmlFiles=src\test\resources\testng-all.xml clean test
+
+# To run allure-report:
+to command line: allure -serve allure-results
 
 # Test Cases:
 
@@ -64,7 +67,7 @@ ID:Order test 3-3.The user orders an item without entering the "Name and Surname
 3. Enter value "test@test.by*" to field "E-mail"
 4. Enter value "Minsk" to field "City"
 5. Click "Complete order"
-6. Check "Контактное лицо this field is required" error message 
+6. Check "Контактное лицо this field is required" error message
 
 ID:Order test 3-4.The user orders an item without entering the "Telephone" field.
 1. Repeat steps on Product test 2-1
@@ -72,7 +75,7 @@ ID:Order test 3-4.The user orders an item without entering the "Telephone" field
 3. Enter value "test@test.by*" to field "E-mail"
 4. Enter value "Minsk" to field "City"
 5. Click "Complete order"
-6. Check "Телефон this field is required" error message 
+6. Check "Телефон this field is required" error message
 
 ID:Order test 3-5.The user orders an item without entering the "City or Country" field.
 1. Repeat steps on Product test 2-1
@@ -80,7 +83,7 @@ ID:Order test 3-5.The user orders an item without entering the "City or Country"
 3. Enter value "testphonenumber" to field "Telephone"
 4. Enter value "test@test.by*" to field "E-mail"
 5. Click "Complete order"
-6. Check "Местоположение this field is required" error message 
+6. Check "Местоположение this field is required" error message
 
 ID:Order test 3-6.The user orders an item without entering the "Email" field.
 1. Repeat steps on Product test 2-1
@@ -89,28 +92,3 @@ ID:Order test 3-6.The user orders an item without entering the "Email" field.
 4. Enter value "Minsk" to field "City"
 5. Click "Complete order"
 6. Check "E-Mail this field is required" error message 
-
-User select watches using filter's and buys it
-
-1. Launch site "https://luch.by/en/"
-2. Click "Unisex" tab on the menu
-3. Click "Quartz" on the "Movement" filter
-4. Click "Mineral" on the "Glass" filter
-5. Click "Sort" and use "First popular"
-6. Click "More info" on the glasses
-7. Click "Add to cart" and see button "Checkout"
-8. Click "Checkout" and see "My shopping cart"
-9. Click "Plus" on the "Basket quantity control" and see total price
-10. Click "Check out" 
-11. Enter value "******" to field "Name and Surname"
-12. Enter value "******" to field "Telephone"
-13. Enter value "******" to field "E-mail"
-14. Select "Pickup in Minsk" on the "Delivery service"
-15. Select "Credit card & Apple Pay" on the "Select payment System"
-16. Click "Complete order"
-17. Check message error "Местоположение this field is required"
-18. Enter value "Minsk" on the "City or Country"
-19. Click "Complete order"
-20. Check payment blank
-
-
