@@ -41,7 +41,7 @@ ID:Product test 2-1.User enter product page "https://luch.by/en/kollektsii/defen
 3. Launch cart page
 4. Check is product in cart
 
-ID:Order test 3-1.User order a product
+ID:Order test 3-1.User order a product is correctly
 
 1. Repeat steps on Product test 2-1
 2. Enter value "Dzmitrytest" to field "Name and Surname"
@@ -52,6 +52,43 @@ ID:Order test 3-1.User order a product
 7. Select "Credit card & Apple Pay" on the "Select payment System"
 8. Click "Complete order"
 9. Check payment blank
+
+ID:Order test 3-2.The user orders an item without entering all fields
+1. Repeat steps on Product test 2-1
+2. Click "Complete order"
+3. See 5 error message's
+
+ID:Order test 3-3.The user orders an item without entering the "Name and Surname" field.
+1. Repeat steps on Product test 2-1
+2. Enter value "testphonenumber" to field "Telephone"
+3. Enter value "test@test.by*" to field "E-mail"
+4. Enter value "Minsk" to field "City"
+5. Click "Complete order"
+6. Check "Контактное лицо this field is required" error message 
+
+ID:Order test 3-4.The user orders an item without entering the "Telephone" field.
+1. Repeat steps on Product test 2-1
+2. Enter value "Dzmitrytest" to field "Name and Surname"
+3. Enter value "test@test.by*" to field "E-mail"
+4. Enter value "Minsk" to field "City"
+5. Click "Complete order"
+6. Check "Телефон this field is required" error message 
+
+ID:Order test 3-5.The user orders an item without entering the "City or Country" field.
+1. Repeat steps on Product test 2-1
+2. Enter value "Dzmitrytest" to field "Name and Surname"
+3. Enter value "testphonenumber" to field "Telephone"
+4. Enter value "test@test.by*" to field "E-mail"
+5. Click "Complete order"
+6. Check "Местоположение this field is required" error message 
+
+ID:Order test 3-6.The user orders an item without entering the "Email" field.
+1. Repeat steps on Product test 2-1
+2. Enter value "Dzmitrytest" to field "Name and Surname"
+3. Enter value "testphonenumber" to field "Telephone"
+4. Enter value "Minsk" to field "City"
+5. Click "Complete order"
+6. Check "E-Mail this field is required" error message 
 
 User select watches using filter's and buys it
 
