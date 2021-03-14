@@ -7,16 +7,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 
 public class DriverSingleton {
-    private static WebDriver driver;
+    static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     private DriverSingleton(){ }
 
     public static WebDriver getDriver() throws Throwable{
-        if(null == driver){
+        if(null == driver.get()){
             switch (System.getProperty("browser")){
                 case "chrome-selenoid":{
                     DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -24,34 +23,33 @@ public class DriverSingleton {
                     capabilities.setCapability("browserVersion", "88.0");
                     capabilities.setCapability("enableVNC", true);
                     capabilities.setCapability("enableVideo", true);
-                    driver = new RemoteWebDriver(
+                    driver.set(new RemoteWebDriver(
                             URI.create("http://104.248.27.208:4444/wd/hub").toURL(),
-                            capabilities);
+                            capabilities));
                     break;
                 }
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    driver.set(new FirefoxDriver());
                     break;
                 }
                 case "chrome":
                 default:{
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driver.set(new ChromeDriver());
                     break;
                 }
             }
-            driver.manage().window().maximize();
+            driver.get().manage().window().maximize();
         }
-        return driver;
+        return driver.get();
     }
 
     public static void deleteAllCookies(){
-        driver.manage().deleteAllCookies();
+        driver.get().manage().deleteAllCookies();
     }
 
-    public static void closeDriver(){
-        driver.quit();
-        driver = null;
+    public static void closeDriver() {
+        driver.remove(); //проходят тесты, но браузер не закрывается
     }
 }

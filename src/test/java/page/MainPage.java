@@ -45,6 +45,7 @@ public class MainPage extends AbstractPageWithStaticURL{
     }
 
     public MainPage clickWatchesToOneClickOrder(int index) throws Throwable {
+        waitForElementClickable(driver.findElement(By.xpath("(//div[@class='owl-item active']//span[@class='oneclick-btn _big _js-b-pop-oneclick'])["+ index +"]")));
         driver.findElement(By.xpath("(//div[@class='owl-item active']//span[@class='oneclick-btn _big _js-b-pop-oneclick'])["+ index +"]"))
                 .click();
         waitforVisibility(oneClickOrderPopup);
