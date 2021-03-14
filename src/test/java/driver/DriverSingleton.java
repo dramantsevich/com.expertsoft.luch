@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URI;
 
 public class DriverSingleton {
-    static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
     private DriverSingleton(){ }
 
