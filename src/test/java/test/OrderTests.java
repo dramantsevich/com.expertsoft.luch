@@ -1,5 +1,7 @@
 package test;
 
+import static org.assertj.core.api.Assertions.*;
+
 import model.Order;
 import model.Product;
 import model.User;
@@ -22,7 +24,7 @@ public class OrderTests extends CommonConditions{
 
         PaymentPage paymentPage = orderPage.goToPaymentPage();
 
-        Assert.assertTrue(paymentPage.isOrderCompleteMessageContain());
+        assertThat(paymentPage.isOrderCompleteMessageContain()).isTrue();
     }
 
     @Test(dependsOnGroups = {"ProductTests.checkCorrectAddToCart"})
@@ -32,7 +34,7 @@ public class OrderTests extends CommonConditions{
 
         PaymentPage paymentPage = orderPage.goToPaymentPage();
 
-        Assert.assertEquals(5, orderPage.getErrorMessagesCount());
+        assertThat(orderPage.getErrorMessagesCount()).isEqualTo(orderPage.getErrorMessageList().size());
     }
 
     @Test(dependsOnGroups = {"ProductTests.checkCorrectAddToCart"})
@@ -45,8 +47,8 @@ public class OrderTests extends CommonConditions{
 
         PaymentPage paymentPage = orderPage.goToPaymentPage();
 
-        Assert.assertEquals(1, orderPage.getErrorMessagesCount());
-        Assert.assertTrue(orderPage.isErrorMessageEqualString("Контактное лицо this field is required"));
+        assertThat(orderPage.getErrorMessagesCount()).isEqualTo(orderPage.getErrorMessageList().size());
+        assertThat(orderPage.getErrorMessage().getText()).isEqualTo("Контактное лицо this field is required");
     }
 
     @Test(dependsOnGroups = {"ProductTests.checkCorrectAddToCart"})
@@ -59,8 +61,8 @@ public class OrderTests extends CommonConditions{
 
         PaymentPage paymentPage = orderPage.goToPaymentPage();
 
-        Assert.assertEquals(1, orderPage.getErrorMessagesCount());
-        Assert.assertTrue(orderPage.isErrorMessageEqualString("Телефон this field is required"));
+        assertThat(orderPage.getErrorMessagesCount()).isEqualTo(orderPage.getErrorMessageList().size());
+        assertThat(orderPage.getErrorMessage().getText()).isEqualTo("Телефон this field is required");
     }
 
     @Test(dependsOnGroups = {"ProductTests.checkCorrectAddToCart"})
@@ -73,8 +75,8 @@ public class OrderTests extends CommonConditions{
 
         PaymentPage paymentPage = orderPage.goToPaymentPage();
 
-        Assert.assertEquals(1, orderPage.getErrorMessagesCount());
-        Assert.assertTrue(orderPage.isErrorMessageEqualString("Местоположение this field is required"));
+        assertThat(orderPage.getErrorMessagesCount()).isEqualTo(orderPage.getErrorMessageList().size());
+        assertThat(orderPage.getErrorMessage().getText()).isEqualTo("Местоположение this field is required");
     }
 
     @Test(dependsOnGroups = {"ProductTests.checkCorrectAddToCart"})
@@ -87,8 +89,9 @@ public class OrderTests extends CommonConditions{
 
         PaymentPage paymentPage = orderPage.goToPaymentPage();
 
-        Assert.assertEquals(2, orderPage.getErrorMessagesCount());
-        Assert.assertTrue(orderPage.isErrorMessagesEqualStrings("E-Mail this field is required", "Email for registration is not specified"));
+        assertThat(orderPage.getErrorMessagesCount()).isEqualTo(orderPage.getErrorMessageList().size());
+        assertThat(orderPage.isErrorMessageEqualString("E-Mail this field is required")).isTrue();
+        assertThat(orderPage.isErrorMessageEqualString("Email for registration is not specified")).isTrue();
     }
 
     private CartPage preConditionProductInCart() throws Throwable {

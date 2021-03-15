@@ -151,32 +151,18 @@ public class OrderPage extends AbstractPageWithStaticURL{
     public boolean isErrorMessageEqualString(String error){
         boolean isMessageEqual = false;
 
-        if(errorMessage.getText().equals(error)){
-            isMessageEqual = true;
-        }
-
-        logger.info("Expected error message: ["+ error +"]" +
-                " Actual error message : ["+ errorMessage.getText() +"]");
-
-        return isMessageEqual;
-    }
-
-    public boolean isErrorMessagesEqualStrings(String error1, String error2){
-        boolean isMessageEqual = false;
-        int equalsMessagesCount = 0;
-
-        for(WebElement el : errorMessagesList){
-            if(el.getText().equals(error1) || el.getText().equals(error2)){
-                equalsMessagesCount++;
-                logger.info("Expected error message: ["+ error1 +", "+ error2 +"]" +
+        for(WebElement errorMessage : errorMessagesList){
+            if(errorMessage.getText().equals(error)){
+                logger.info("Expected error message: ["+ error +"]" +
                         " Actual error message : ["+ errorMessage.getText() +"]");
+                isMessageEqual = true;
             }
         }
 
-        if(getErrorMessagesCount() == equalsMessagesCount){
-            isMessageEqual = true;
-        }
-
         return isMessageEqual;
     }
+
+    public List<WebElement> getErrorMessageList(){ return errorMessagesList; }
+
+    public WebElement getErrorMessage(){ return errorMessage; }
 }

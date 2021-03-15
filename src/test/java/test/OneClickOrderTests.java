@@ -1,5 +1,7 @@
 package test;
 
+import static org.assertj.core.api.Assertions.*;
+
 import model.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -16,7 +18,7 @@ public class OneClickOrderTests extends CommonConditions{
                 .inputFieldsInOneClickOrderPopup(testUser)
                 .submitFormOneClickOrder();
 
-        Assert.assertTrue(mainPage.isFormOneClickOrderSuccessfullMessageVisible(), "form of one click order is successfully work");
+        assertThat(mainPage.isFormOneClickOrderSuccessfullMessageVisible()).isTrue();
     }
 
     @Test
@@ -26,7 +28,7 @@ public class OneClickOrderTests extends CommonConditions{
                 .inputClientPhoneField(testUserWithoutName)
                 .submitFormOneClickOrder();
 
-        Assert.assertTrue(mainPage.isRequiredClientNameInputWillPopupError(), "element is required and validation error will popup if the field is empty");
+        assertThat(mainPage.isRequiredClientNameInputWillPopupError()).isTrue();
     }
 
     @Test
@@ -36,7 +38,7 @@ public class OneClickOrderTests extends CommonConditions{
                 .inputClientNameField(testUserWithoutName)
                 .submitFormOneClickOrder();
 
-        Assert.assertTrue(mainPage.isRequiredClientPhoneInputWillPopupError(), "element is required and validation error will popup if the field is empty");
+        assertThat(mainPage.isRequiredClientPhoneInputWillPopupError()).isTrue();
     }
 
     private static MainPage openPageAndClickToWatchesOneClickOrder(WebDriver driver) throws Throwable {

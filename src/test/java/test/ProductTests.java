@@ -1,5 +1,7 @@
 package test;
 
+import static org.assertj.core.api.Assertions.*;
+
 import model.Product;
 import org.junit.Assert;
 import org.testng.annotations.Test;
@@ -22,6 +24,6 @@ public class ProductTests extends CommonConditions{
 
         CartPage cartPage = productPage.goToCartPage();
 
-        Assert.assertTrue(cartPage.isProductContainInCart(product));
+        assertThat(cartPage.isProductContainInCart(product)).isTrue();
     }
 }
