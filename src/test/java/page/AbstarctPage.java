@@ -11,9 +11,10 @@ public abstract class AbstarctPage {
     protected WebDriver driver;
     protected static final int WAIT_TIMEOUT_SECONDS = 10;
 
-    protected AbstarctPage(WebDriver driver){
-        this.driver = driver;
+    protected AbstarctPage() throws Throwable {
+        driver = DriverSingleton.getDriver();
     }
+
     public String getCurrentUrl(){
         return driver.getCurrentUrl();
     }

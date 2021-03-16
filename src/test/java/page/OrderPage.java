@@ -5,7 +5,6 @@ import model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -39,8 +38,8 @@ public class OrderPage extends AbstractPageWithStaticURL{
     By completeOrderButton = By.xpath("//a[contains(text(),'Complete Order')]");
     By loadingAPI = By.xpath("//div[contains(@id,'wait_') and contains(text(),'Loading')]");
 
-    public OrderPage(WebDriver driver){
-        super(driver);
+    public OrderPage() throws Throwable {
+        super();
         PageFactory.initElements(this.driver, this);
     }
 
@@ -140,26 +139,7 @@ public class OrderPage extends AbstractPageWithStaticURL{
         driver.findElement(completeOrderButton).click();
         waitWebElementVisibilityInDOM(loadingAPI);
         logger.info("Clicked to 'Complete order' on cart page");
-        return new PaymentPage(driver);
-    }
-
-    public int getErrorMessagesCount () {
-        logger.info("Size of error messages: ["+ errorMessagesList.size() +"]");
-        return errorMessagesList.size();
-    }
-
-    public boolean isErrorMessageEqualString(String error){
-        boolean isMessageEqual = false;
-
-        for(WebElement errorMessage : errorMessagesList){
-            if(errorMessage.getText().equals(error)){
-                logger.info("Expected error message: ["+ error +"]" +
-                        " Actual error message : ["+ errorMessage.getText() +"]");
-                isMessageEqual = true;
-            }
-        }
-
-        return isMessageEqual;
+        return new PaymentPage();
     }
 
     public List<WebElement> getErrorMessageList(){ return errorMessagesList; }

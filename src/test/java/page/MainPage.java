@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -32,8 +31,8 @@ public class MainPage extends AbstractPageWithStaticURL{
     @FindBy(xpath = "//div[@class='form_result pop-body success']")
     private WebElement formOneClickOrderSuccessfullMessage;
 
-    public MainPage(WebDriver driver) {
-        super(driver);
+    public MainPage() throws Throwable {
+        super();
         PageFactory.initElements(this.driver, this);
     }
 
@@ -83,22 +82,18 @@ public class MainPage extends AbstractPageWithStaticURL{
         return this;
     }
 
-    public boolean isFormOneClickOrderSuccessfullMessageVisible() throws Throwable {
+    public WebElement getFormOneClickOrderSuccessfullMessage() throws Throwable {
         waitforVisibility(formOneClickOrderSuccessfullMessage);
-        logger.info("User see 'One click order' successful message");
-        return formOneClickOrderSuccessfullMessage.isDisplayed();
-    }
 
-    public boolean isRequiredClientNameInputWillPopupError(){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;", clientNameInput);
-        logger.info("User see 'Please fill out this field.'");
-        return isRequired;
-    }
+        return formOneClickOrderSuccessfullMessage; }
 
-    public boolean isRequiredClientPhoneInputWillPopupError(){
+    public WebElement getClientNameInput(){ return clientNameInput; }
+
+    public WebElement getClientPhoneInput(){ return clientPhoneInput; }
+
+    public boolean isRequiredInputWillPopupError(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;", clientPhoneInput);
+        boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;", element);
         logger.info("User see 'Please fill out this field.'");
         return isRequired;
     }

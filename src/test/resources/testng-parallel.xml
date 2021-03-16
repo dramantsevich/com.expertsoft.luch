@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Parallel suite" parallel="methods" thread-count="2">
+<suite name="Parallel suite" parallel="classes" thread-count="2">
     <test name="Parallel testing">
         <classes>
             <class name="test.ProductTests" />
+            <class name="test.OrderNegativeTests"/>
             <class name="test.OneClickOrderTests"/>
-            <class name="test.OrderTests"/>
+            <class name="test.OrderPositiveTests"/>
         </classes>
     </test>
 </suite>

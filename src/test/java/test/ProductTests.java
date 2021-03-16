@@ -3,7 +3,6 @@ package test;
 import static org.assertj.core.api.Assertions.*;
 
 import model.Product;
-import org.junit.Assert;
 import org.testng.annotations.Test;
 import page.CartPage;
 import page.Header;
@@ -14,16 +13,17 @@ public class ProductTests extends CommonConditions{
     @Test(groups = "ProductTests.checkCorrectAddToCart")
     public void checkCorrectAddToCart() throws Throwable {
         Product product = ProductCreator.product();
+        int expectedCount = 1;
 
-        ProductPage productPage = new ProductPage(driver)
-                .openPage(product.getProductURL());
-        productPage.isProductHeaderDisplyed();
-        productPage.addToCart(product);
+        ProductPage productPage = new ProductPage()
+                .openPage(product.getProductURL())
+                .addToCart(product);
 
-        new Header(driver).isCartNotEmpty();
+        assertThat(Integer.parseInt(new Header().getIconProductsInCartCount().getText())).isGreaterThan(0);
 
         CartPage cartPage = productPage.goToCartPage();
 
-        assertThat(cartPage.isProductContainInCart(product)).isTrue();
+        assertThat(product.getCount()).isEqualTo(expectedCount);
+        assertThat(product.getProductURL()).contains(cartPage.getProductInCartByUrl(product).getText());
     }
 }

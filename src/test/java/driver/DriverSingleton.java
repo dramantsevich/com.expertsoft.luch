@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URI;
 
 public class DriverSingleton {
-    static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     private DriverSingleton(){ }
 
@@ -49,7 +49,8 @@ public class DriverSingleton {
         driver.get().manage().deleteAllCookies();
     }
 
-    public static void closeDriver() {
-        driver.remove(); //проходят тесты, но браузер не закрывается
+    public static void closeDriver(){
+        driver.get().quit();
+        driver.remove();
     }
 }
