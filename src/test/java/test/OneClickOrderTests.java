@@ -12,11 +12,13 @@ public class OneClickOrderTests extends CommonConditions{
     @Test
     public void checkCorrectOneClickOrder() throws Throwable {
         User testUser = UserCreator.userForOnceClickOrder();
+        String expectedMessage = "Your message was sent successfully";
+
         MainPage mainPage = openPageAndClickToWatchesOneClickOrder()
                 .inputFieldsInOneClickOrderPopup(testUser)
                 .submitFormOneClickOrder();
 
-        assertThat(mainPage.getFormOneClickOrderSuccessfullMessage().getText()).isEqualTo("Your message was sent successfully");
+        assertThat(mainPage.getFormOneClickOrderSuccessfullMessage().getText()).isEqualTo(expectedMessage);
     }
 
     @Test

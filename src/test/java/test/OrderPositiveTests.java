@@ -14,6 +14,7 @@ public class OrderPositiveTests extends PreConditionsForOrderTests{
     @Test(dependsOnGroups = {"ProductTests.checkCorrectAddToCart"})
     public void checkCorrectlyOrderedProduct() throws Throwable {
         User testUser = UserCreator.userForOrderPage();
+        String expectedMessage = "Order complete";
 
         OrderPage orderPage = preConditionProductInCart()
                 .inputAllFieldsInOrder(testUser)
@@ -24,7 +25,7 @@ public class OrderPositiveTests extends PreConditionsForOrderTests{
 
         String currentUrl = paymentPage.getCurrentUrl();
 
-        assertThat(paymentPage.getOrderCompeleteMessage().getText()).isEqualTo("Order complete");
+        assertThat(paymentPage.getOrderCompeleteMessage().getText()).isEqualTo(expectedMessage);
         assertThat(currentUrl).isEqualTo(paymentPage.getCurrentUrl());
     }
 }
