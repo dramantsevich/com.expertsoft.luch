@@ -93,40 +93,36 @@ ID:Order test 3-6.The user orders an item without entering the "Email" field.
 5. Click "Complete order"
 6. Check "E-Mail this field is required" error message 
 
-ID:Filter test 4-1.The user choose "Men's" type of watches and when switching to the product sees "Men's" type.
+ID:Filter test 4-1.The user choose "<gender>" type of watches and when switching to the product sees "<gender>" type.
 1. Launch site "https://luch.by/en/watches/"
 2. Click on the "+" button in the "Type" category filter
-3. Choose "Men's" type of watches.
+3. Choose "<gender>" type of watches.
 4. Choose any watches and click "More info"
-5. Check then type of watches the "Men's"
+5. Check then type of watches the "<gender>"
 
-ID:Filter test 4-2.The user choose "Women's" type of watches and when switching to the product sees "Women's" type.
-1. Launch site "https://luch.by/en/watches/"
-2. Click on the "+" button in the "Type" category filter
-3. Choose "Women's" type of watches.
-4. Choose any watches and click "More info"
-5. Check then type of watches the "Women's"
+ Example: 
+    | gender  |
+    | Women's | 
+    | Men's   | 
 
-ID:Filter test 4-3.The user choose "Quartz" movement of watches and when switching to the product sees "Quartz" type.
+ID:Filter test 4-2.The user choose "<movementName>" movement of watches and when switching to the product sees "<movementName>" type.
 1. Launch site "https://luch.by/en/watches/"
-2. Choose "Quartz" movement of watches.
+2. Choose "<movementName>" movement of watches.
 3. Choose any watches and click "More info"
-4. Check then movement of watches the "Quartz"
+4. Check then movement of watches the "<movementName>"
 
-ID:Filter test 4-4.The user choose "Mechanical" movement of watches and when switching to the product sees "Mechanical" type.
-1. Launch site "https://luch.by/en/watches/"
-2. Choose "Mechanical" movement of watches.
-3. Choose any watches and click "More info"
-4. Check then movement of watches the "Mechanical"
+Example: 
+    | movementName |
+    | Quartz       | 
+    | Mechaniocal  | 
 
-ID:Sort test 5-1.The user choose type of sort "First popular" and see popular watches at the first.
+ID:Sort test 5-1.The user choose type of sort "<sortType>" and see "<sortType>" watches at the first.
 1. Launch site "https://luch.by/en/watches/"
 2. Click to "Sort" button
-3. Choose "First popular" type of sort
-4. See popular watches at the first
+3. Choose "<sortType>" type of sort
+4. See "<sortType>" watches at the first
 
-ID:Sort test 5-2.The user choose type of sort "First old" and see oldest watches at the first.
-1. Launch site "https://luch.by/en/watches/"
-2. Click to "Sort" button
-3. Choose "First old" type of sort
-4. See oldest watches at the first
+Example: 
+    | sortType            |
+    | First popular       | 
+    | Price: lowest first | 
