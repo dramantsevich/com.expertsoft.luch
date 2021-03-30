@@ -4,6 +4,8 @@ import model.Product;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage extends AbstractPageWithParametrizedURL{
@@ -12,6 +14,8 @@ public class ProductPage extends AbstractPageWithParametrizedURL{
     By addProductToOrderButton = By.xpath("//button[@class='button _big button_add']");
     By checkoutButton = By.xpath("//span[contains(text(),'Checkout')]");
     By goToCartPageButton = By.xpath("//a[@class='btn btn-link product-item-detail-buy-button button _big']");
+    By genderTypeDescription = By.xpath("//div[@class='prop-title' and contains(text(),'Type')]/following-sibling::div[@class='prop-value']/a");
+    By movementDescription = By.xpath("//div[@class='prop-title' and contains(text(),'Movement')]/following-sibling::div[@class='prop-value']/a");
 
     public ProductPage() throws Throwable {
         super();
@@ -37,5 +41,17 @@ public class ProductPage extends AbstractPageWithParametrizedURL{
         driver.findElement(goToCartPageButton).click();
         logger.info("Click to 'checkout' on product page");
         return new CartPage();
+    }
+
+    public WebElement getGenderType() throws Throwable {
+        waitforVisibility(driver.findElement(genderTypeDescription));
+
+        return driver.findElement(genderTypeDescription);
+    }
+
+    public WebElement getMovementDescription() throws Throwable {
+        waitforVisibility(driver.findElement(movementDescription));
+
+        return driver.findElement(movementDescription);
     }
 }
