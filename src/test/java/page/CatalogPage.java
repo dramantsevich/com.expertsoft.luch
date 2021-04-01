@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 
 public class CatalogPage extends AbstractPageWithStaticURL{
     private final String BASE_URL = "https://luch.by/en/watches/";
+    private final String HIGHEST_FIRST_URL = "https://luch.by/en/watches/?sort=PRICE&order=asc";
     private final Logger logger = LogManager.getRootLogger();
 
     @FindBy(xpath = "//div[@class='name' and text()='Type']/div[@class='b-dropper ']")
@@ -57,6 +58,12 @@ public class CatalogPage extends AbstractPageWithStaticURL{
     public CatalogPage openPage() {
         driver.navigate().to(BASE_URL);
         logger.info("Main page opened");
+        return this;
+    }
+
+    public CatalogPage openHighestFirstPage(){
+        driver.navigate().to(HIGHEST_FIRST_URL);
+        logger.info("Highest first page opened");
         return this;
     }
 
