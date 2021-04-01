@@ -16,6 +16,7 @@ public class ProductPage extends AbstractPageWithParametrizedURL{
     By goToCartPageButton = By.xpath("//a[@class='btn btn-link product-item-detail-buy-button button _big']");
     By genderTypeDescription = By.xpath("//div[@class='prop-title' and contains(text(),'Type')]/following-sibling::div[@class='prop-value']/a");
     By movementDescription = By.xpath("//div[@class='prop-title' and contains(text(),'Movement')]/following-sibling::div[@class='prop-value']/a");
+    By productPrice = By.xpath("//meta[@itemprop='price']");
 
     public ProductPage() throws Throwable {
         super();
@@ -30,7 +31,9 @@ public class ProductPage extends AbstractPageWithParametrizedURL{
     }
 
     public ProductPage addToCart(Product product){
+        int price = Integer.parseInt(driver.findElement(productPrice).getAttribute("content"));
         driver.findElement(addProductToOrderButton).click();
+        product.setPrice(price);
         product.setCount(product.getCount() + 1);
         logger.info("Added product to order, count of product: "+ product.getCount() +"");
         return this;
