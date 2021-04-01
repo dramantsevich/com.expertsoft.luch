@@ -151,3 +151,14 @@ ID:Sort test 5-2. The user choose type of sort "Price: lowest first" and see "Pr
 ID:Sort test 5-3. The user choose type of sort "Price: highest first" and see "Price: highest first" highest watches at the first 
 1. Launch site "https://luch.by/en/watches/?sort=PRICE&order=asc"\
 2. Verfiy "Price: highest first" watches at the first
+
+ID:Search test 6-1. The user input article in search input field and verify that product is correct
+1.Launch site "https://luch.by/en/"
+2.Input "article" to search input
+3.Click to product
+4.Verify that product is correct
+
+Example: 
+    | article   |
+    | 77431556  | 
+    | 272081648 | 
