@@ -44,6 +44,26 @@ ID:Product test 2-1.User enter product page "https://luch.by/en/kollektsii/defen
 3. Click to 'checkout' on product page
 4. Verify if the product in cart
 
+ID:Product test 2-2.User enter product page and add product to cart, then add one more quantity 
+1. Launch site "https://luch.by/en/kollektsii/defender/77431556/"
+2. Click "Add to cart"
+3. Click to "checkout" on product page
+4. Click "+" to add one more quantity
+5. Verify the price has doubled
+
+ID:Product test 2-3.User enter product page and add product to cart, then delete product
+
+1. Launch site "https://luch.by/en/kollektsii/defender/77431556/"
+2. Click "Add to cart"
+3. Click to 'checkout' on product page
+4. Click to "Delete" button
+5. Verify if the cart is empty
+
+ID:Product test 2-4.User twice enter product page and add product to cart, then verify total price
+1.Repeat steps on Product test 2-1 with "/en/kollektsii/defender/77431556/"
+2.Repeat steps on Product test 2-1 with "/en/kollektsii/obratnyy-khod/272081648/"
+3.Verify the total price is sum price of both product's
+
 ID:Order test 3-1.User order a product is correctly
 
 1. Repeat steps on Product test 2-1
