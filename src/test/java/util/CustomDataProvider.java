@@ -1,26 +1,26 @@
 package util;
 
-import org.testng.annotations.DataProvider;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomDataProvider {
-    @DataProvider(name = "TypeFilterProvider")
-    public Object [] getTypeData(){
-        Object[] data = {"Men’s", "Women’s"};
+    public static Object[] readCsv(String fileName) throws IOException, CsvException {
+        CSVReader csvReader = new CSVReader(new FileReader("src/test/resources/testdata/" + fileName));
 
-        return data;
-    }
+        List<String[]> csvData = csvReader.readAll();
 
-    @DataProvider(name = "MovementFilterProvider")
-    public Object [] getMovementData(){
-      Object[] data = {"Quartz", "Mechanical"};
+        Object[] csvDataObject = new Object[csvData.size()][2];
 
-      return data;
-    }
+        for (int i = 0; i < csvData.size(); i++) {
+            csvDataObject[i] = csvData.get(i);
+        }
 
-    @DataProvider(name = "SortProvider")
-    public Object [] getSortData(){
-        Object[] data = {"First popular", "Price: lowest first"};
-
-        return data;
+        return csvDataObject;
     }
 }

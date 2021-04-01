@@ -8,6 +8,9 @@
             <class name="test.OrderNegativeTests"/>
             <class name="test.OneClickOrderTests"/>
             <class name="test.OrderPositiveTests"/>
+            <class name="test.FilterTests"/>
+            <class name="test.SortTests"/>
+            <class name="test.SearchTest"/>
         </classes>
     </test>
 </suite>
