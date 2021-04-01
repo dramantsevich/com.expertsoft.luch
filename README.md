@@ -93,28 +93,28 @@ ID:Order test 3-6.The user orders an item without entering the "Email" field.
 5. Click "Complete order"
 6. Verify the following error message is "E-Mail this field is required"
 
-ID:Filter test 4-1.The user choose "<gender>" type of watches and when switching to the product sees "<gender>" type.
+ID:Filter test 4-1.The user choose "gender" type of watches and when switching to the product sees "gender" type.
 1. Launch site "https://luch.by/en/watches/"
 2. Click on the "+" button in the "Type" category filter
-3. Choose "<gender>" type of watches.
+3. Choose "gender" type of watches.
 4. Choose any watches and click "More info"
-5. Verify then type of watches the "<gender>"
+5. Verify then type of watches the "gender"
 
  Example: 
-    | <gender> |
-    | Women's  | 
-    | Men's    | 
+    | gender |
+    | Women's| 
+    | Men's  | 
 
-ID:Filter test 4-2.The user choose "<movementName>" movement of watches and when switching to the product sees "<movementName>" type.
+ID:Filter test 4-2.The user choose "movementName" movement of watches and when switching to the product sees "movementName" type.
 1. Launch site "https://luch.by/en/watches/"
-2. Choose "<movementName>" movement of watches.
+2. Choose "movementName" movement of watches.
 3. Choose any watches and click "More info"
-4. Verfiy then movement of watches the "<movementName>"
+4. Verfiy then movement of watches the "movementName"
 
 Example: 
-    | <movementName> |
-    | Quartz         | 
-    | Mechaniocal    | 
+    | movementName |
+    | Quartz       | 
+    | Mechaniocal  | 
 
 ID:Sort test 5-1.The user choose type of sort "First popular" and see "First popular" watches at the first.
 1. Launch site "https://luch.by/en/watches/"
