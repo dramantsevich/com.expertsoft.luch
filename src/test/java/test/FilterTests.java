@@ -2,13 +2,17 @@ package test;
 
 import static org.assertj.core.api.Assertions.*;
 
+import com.opencsv.exceptions.CsvException;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.CatalogPage;
 import page.ProductPage;
 import util.CustomDataProvider;
 
+import java.io.IOException;
+
 public class FilterTests extends CommonConditions{
-    @Test(dataProvider = "TypeFilterProvider", dataProviderClass = CustomDataProvider.class)
+    @Test(dataProvider = "TypeFilterProvider")
     public void checkCorrectTypeFilter(String typeName) throws Throwable {
         CatalogPage catalogPage = new CatalogPage()
                 .openPage()
@@ -18,10 +22,10 @@ public class FilterTests extends CommonConditions{
 
         ProductPage productPage = catalogPage.clickMoreInfoOnWatchesByIndex(1);
 
-        assertThat(productPage.getGenderType().getText()).isEqualTo(typeName);
+        assertThat(productPage.getGenderType().getText()).contains(typeName);
     }
 
-    @Test(dataProvider = "MovementFilterProvider", dataProviderClass = CustomDataProvider.class)
+    @Test(dataProvider = "MovementFilterProvider")
     public void checkCorrectMovementFilter(String movementName) throws Throwable {
         CatalogPage catalogPage = new CatalogPage()
                 .openPage()
@@ -30,5 +34,15 @@ public class FilterTests extends CommonConditions{
         ProductPage productPage = catalogPage.clickMoreInfoOnWatchesByIndex(1);
 
         assertThat(productPage.getMovementDescription().getText()).isEqualTo(movementName);
+    }
+
+    @DataProvider(name = "TypeFilterProvider")
+    public Object [] getTypeData() throws IOException, CsvException {
+        return CustomDataProvider.readCsv("typeFilter.csv");
+    }
+
+    @DataProvider(name = "MovementFilterProvider")
+    public Object [] getMovementData() throws IOException, CsvException {
+        return CustomDataProvider.readCsv("movementFilter.csv");
     }
 }
