@@ -60,9 +60,9 @@ ID:Product test 2-3.User enter product page and add product to cart, then delete
 5. Verify if the cart is empty
 
 ID:Product test 2-4.User twice enter product page and add product to cart, then verify total price
-1.Repeat steps on Product test 2-1 with "/en/kollektsii/defender/77431556/"
-2.Repeat steps on Product test 2-1 with "/en/kollektsii/obratnyy-khod/272081648/"
-3.Verify the total price is sum price of both product's
+1. Repeat steps on Product test 2-1 with "/en/kollektsii/defender/77431556/"
+2. Repeat steps on Product test 2-1 with "/en/kollektsii/obratnyy-khod/272081648/"
+3. Verify the total price is sum price of both product's
 
 ID:Order test 3-1.User order a product is correctly
 
@@ -153,10 +153,10 @@ ID:Sort test 5-3. The user choose type of sort "Price: highest first" and see "P
 2. Verfiy "Price: highest first" watches at the first
 
 ID:Search test 6-1. The user input article in search input field and verify that product is correct
-1.Launch site "https://luch.by/en/"
-2.Input "article" to search input
-3.Click to product
-4.Verify that product is correct
+1. Launch site "https://luch.by/en/"
+2. Input "article" to search input
+3. Click to product
+4. Verify that product is correct
 
 Example: 
     | article   |
