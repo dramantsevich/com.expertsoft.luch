@@ -15,21 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CatalogPage extends AbstractPageWithStaticURL{
-    private final String BASE_URL = "https://luch.by/en/watches/";
-    private final String HIGHEST_FIRST_URL = "https://luch.by/en/watches/?sort=PRICE&order=asc";
-    private final Logger logger = LogManager.getRootLogger();
-
-    @FindBy(xpath = "//div[@class='name' and text()='Type']/div[@class='b-dropper ']")
-    private WebElement typeFilterDropperButton;
-
-    @FindBy(xpath = "//div[@class='name' and text()='Type']/following-sibling::div/div[@class='wrapper']")
-    private WebElement typeFilterWrapper;
-
-    @FindBy(xpath = "//div[@class='input checkbox']/label[contains(text(),'Unisex')]")
-    private WebElement unisexTypeFilter;
-
-    @FindBy(xpath = "//div[@class='tags-list']")
-    private WebElement tagList;
+    protected final Logger logger = LogManager.getRootLogger();
 
     @FindBy(xpath = "//div[@class='button b-sort-by _js-b-mobile-sort-by']")
     private WebElement sortButton;
@@ -49,6 +35,9 @@ public class CatalogPage extends AbstractPageWithStaticURL{
     @FindBy(xpath = "//a/div/div/div/div/div[@class='price']/span")
     private List<WebElement> itemPriceList;
 
+    @FindBy(xpath = "//div[@class='tags-list']")
+    private WebElement tagList;
+
     public CatalogPage() throws Throwable {
         super();
         PageFactory.initElements(this.driver, this);
@@ -56,56 +45,26 @@ public class CatalogPage extends AbstractPageWithStaticURL{
 
     @Override
     public CatalogPage openPage() {
-        driver.navigate().to(BASE_URL);
-        logger.info("Main page opened");
         return this;
     }
 
-    public CatalogPage openHighestFirstPage(){
-        driver.navigate().to(HIGHEST_FIRST_URL);
-        logger.info("Highest first page opened");
-        return this;
-    }
+    public CatalogPage clickFilterByName(String filterName) throws Throwable {
+        waitForElementClickable(driver.findElement(By.xpath("//div[@class='input checkbox']/label[contains(text(),'"+ filterName +"')]")));
 
-    public CatalogPage dropTypeFilter() throws Throwable {
-        typeFilterDropperButton.click();
-        waitforVisibility(typeFilterWrapper);
-        logger.info("Type filter dropper clicked");
-        return this;
-    }
-
-    public CatalogPage clickTypeFilterByName(String typeName) throws Throwable {
-        waitForElementClickable(driver.findElement(By.xpath("//div[@class='input checkbox']/label[contains(text(),'"+ typeName +"')]")));
-
-        driver.findElement(By.xpath("//div[@class='input checkbox']/label[contains(text(),'"+ typeName +"')]"))
+        driver.findElement(By.xpath("//div[@class='input checkbox']/label[contains(text(),'"+ filterName +"')]"))
                 .click();
-
         Thread.sleep(1000);
+        logger.info("ProductType filter "+ filterName +" clicked");
 
-        logger.info("Type filter "+ typeName +" clicked");
-        return this;
-    }
-
-    public CatalogPage waitForTagsList() throws Throwable {
-        waitforVisibility(tagList);
         return this;
     }
 
     public ProductPage clickMoreInfoOnWatchesByIndex(int index) throws Throwable {
-        waitforVisibility(driver.findElement(By.xpath("//div[@class='item']["+ index +"]//span[@class='more-btn']")));
-        driver.findElement(By.xpath("//div[@class='item']["+ index +"]//span[@class='more-btn']"))
+        waitforVisibility(driver.findElement(By.xpath("//div[@class='row product-item-list-col-3'][1]//div[@class='item']["+ index +"]//span[@class='more-btn']")));
+        driver.findElement(By.xpath("//div[@class='row product-item-list-col-3']["+ index +"]//div[@class='item']["+ index +"]//span[@class='more-btn']"))
                 .click();
         logger.info("Click to 'More info' button");
         return new ProductPage();
-    }
-
-    public CatalogPage clickMovementFilterByName(String movementName) throws Throwable {
-        driver.findElement(By.xpath("//div[@class='input checkbox']/label[contains(text(),'"+ movementName +"')]"))
-                .click();
-        Thread.sleep(1000);
-        logger.info("Movement filter "+ movementName +" clicked");
-
-        return this;
     }
 
     public CatalogPage clickSortButton() throws Throwable {
@@ -127,22 +86,12 @@ public class CatalogPage extends AbstractPageWithStaticURL{
         return this;
     }
 
-    public List<Product> getListProducts() throws Throwable {
-        List<Product> productsList = createListProducts();
-        int index = 0;
-
-        for(Product product : productsList){
-            setProductName(product, index);
-            setProductArticle(product, index);
-            setProductPrice(product, index);
-
-            index++;
-        }
-
-        return productsList;
+    public CatalogPage waitForTagsList() throws Throwable {
+        waitforVisibility(tagList);
+        return this;
     }
 
-    private List<Product> createListProducts() throws Throwable {
+    protected List<Product> createListProducts() throws Throwable {
         List<Product> productsList = new ArrayList<>();
 
         for(WebElement item : itemList){
@@ -155,24 +104,24 @@ public class CatalogPage extends AbstractPageWithStaticURL{
         return productsList;
     }
 
-    private Product setProductName(Product product, int index){
+    protected Product setProductName(Product product, int index){
         String name = itemNameList.get(index).getText();
         product.setName(name);
 
         return product;
     }
 
-    private Product setProductArticle(Product product, int index){
+    protected Product setProductArticle(Product product, int index){
         String article = itemArticleList.get(index).getText();
         product.setArticle(Integer.parseInt(article));
 
         return product;
     }
 
-    private Product setProductPrice(Product product, int index){
+    protected Product setProductPrice(Product product, int index){
         String price = itemPriceList.get(index).getText().replaceAll("\\s+","");
 
-        Pattern pattern = Pattern.compile("^[\\d]*");
+        Pattern pattern = Pattern.compile("[^mr][\\d]+");
         Matcher matcher = pattern.matcher(price);
 
         if(matcher.find()){
@@ -189,5 +138,4 @@ public class CatalogPage extends AbstractPageWithStaticURL{
             return product;
         }
     }
-
 }

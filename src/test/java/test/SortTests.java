@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import model.Product;
 import org.testng.annotations.Test;
 import page.CatalogPage;
+import page.CatalogWatchesPage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -13,12 +14,14 @@ import java.util.List;
 public class SortTests extends CommonConditions{
     @Test
     public void CheckSortLowestFirst() throws Throwable {
-        CatalogPage catalogPage = new CatalogPage()
-                .openPage()
+        CatalogWatchesPage catalogWatchesPage = new CatalogWatchesPage()
+                .openPage();
+
+        CatalogPage catalogPage = new CatalogWatchesPage()
                 .clickSortButton()
                 .clickSortByName("Price: lowest first");
 
-        List<Product> productsList = catalogPage.getListProducts();
+        List<Product> productsList = catalogWatchesPage.getListProducts();
         List<Product> sortedList = new ArrayList<>(productsList);
         sortedList.sort(Comparator.comparing(Product::getPrice).reversed());
 
@@ -27,7 +30,7 @@ public class SortTests extends CommonConditions{
 
     @Test
     public void CheckSortHighestFirst() throws Throwable {
-        CatalogPage catalogPage = new CatalogPage()
+        CatalogWatchesPage catalogPage = new CatalogWatchesPage()
                 .openHighestFirstPage();
 
         List<Product> productsList = catalogPage.getListProducts();
@@ -39,11 +42,14 @@ public class SortTests extends CommonConditions{
 
     @Test
     public void CheckSortFirstPopular() throws Throwable{
-        CatalogPage catalogPage = new CatalogPage()
+        CatalogWatchesPage catalogWatchesPage = new CatalogWatchesPage()
+                .openPage();
+
+        CatalogPage catalogPage = new CatalogWatchesPage()
                 .openPage()
                 .clickSortButton()
                 .clickSortByName("First popular");
 
-        List<Product> productsList = catalogPage.getListProducts();
+        List<Product> productsList = catalogWatchesPage.getListProducts();
     }
 }

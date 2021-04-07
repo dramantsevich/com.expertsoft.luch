@@ -17,6 +17,8 @@ public class ProductPage extends AbstractPageWithParametrizedURL{
     By genderTypeDescription = By.xpath("//div[@class='prop-title' and contains(text(),'Type')]/following-sibling::div[@class='prop-value']/a");
     By movementDescription = By.xpath("//div[@class='prop-title' and contains(text(),'Movement')]/following-sibling::div[@class='prop-value']/a");
     By productPrice = By.xpath("//meta[@itemprop='price']");
+    By productType = By.xpath("//div[@class='prop-title' and contains(text(),'Product type')]/following-sibling::div[@class='prop-value']/a");
+    By productColour = By.xpath("//div[@class='prop-title' and contains(text(),'Colour')]/following-sibling::div[@class='prop-value']/a");
 
     public ProductPage() throws Throwable {
         super();
@@ -56,5 +58,17 @@ public class ProductPage extends AbstractPageWithParametrizedURL{
         waitforVisibility(driver.findElement(movementDescription));
 
         return driver.findElement(movementDescription);
+    }
+
+    public WebElement getProductType() throws Throwable {
+        waitforVisibility(driver.findElement(productType));
+
+        return driver.findElement(productType);
+    }
+
+    public WebElement getProductColour() throws Throwable {
+        waitforVisibility(driver.findElement(productColour));
+
+        return driver.findElement(productColour);
     }
 }
