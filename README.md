@@ -60,9 +60,9 @@ ID:Product test 2-3.User enter product page and add product to cart, then delete
 5. Verify if the cart is empty
 
 ID:Product test 2-4.User twice enter product page and add product to cart, then verify total price
-1.Repeat steps on Product test 2-1 with "/en/kollektsii/defender/77431556/"
-2.Repeat steps on Product test 2-1 with "/en/kollektsii/obratnyy-khod/272081648/"
-3.Verify the total price is sum price of both product's
+1. Repeat steps on Product test 2-1 with "/en/kollektsii/defender/77431556/"
+2. Repeat steps on Product test 2-1 with "/en/kollektsii/obratnyy-khod/272081648/"
+3. Verify the total price is sum price of both product's
 
 ID:Order test 3-1.User order a product is correctly
 
@@ -151,3 +151,42 @@ ID:Sort test 5-2. The user choose type of sort "Price: lowest first" and see "Pr
 ID:Sort test 5-3. The user choose type of sort "Price: highest first" and see "Price: highest first" highest watches at the first 
 1. Launch site "https://luch.by/en/watches/?sort=PRICE&order=asc"\
 2. Verfiy "Price: highest first" watches at the first
+
+ID:Search test 6-1. The user input article in search input field and verify that product is correct
+1. Launch site "https://luch.by/en/"
+2. Input "article" to search input
+3. Click to product
+4. Verify that product is correct
+
+Example: 
+    | article   |
+    | 77431556  | 
+    | 272081648 | 
+    
+ID:Accessories test 7-1.The user choose "productType" product type and when switching to the product sees "productType" type.
+1. Launch site "https://luch.by/en/accessories/"
+2. Choose "productType" of accessories.
+3. Choose any watches and click "More info"
+4. Verfiy then type of accessories the "productType"
+
+Example: 
+    | productType |
+    | A bracelet  | 
+    | Wallet      | 
+    
+ID:Accessories test 7-2.The user choose "productColour" product colour and when switching to the product sees "productColour" colour.
+1. Launch site "https://luch.by/en/accessories/"
+2. Choose "productColour" of accessories.
+3. Choose any watches and click "More info"
+4. Verfiy then type of accessories the "productColour"
+
+Example: 
+    | productColour |
+    | Green         | 
+    | Marsal        | 
+    
+ID:Accessories test 7-3.The user choose type of sort "First popular" and see "First popular" accessories at the first.
+1. Launch site "https://luch.by/en/accessories/"
+2. Click to "Sort" button
+3. Choose "First popular" type of sort
+4. Verfiy "First popular" accessories at the first
