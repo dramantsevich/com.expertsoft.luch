@@ -162,3 +162,14 @@ Example:
     | article   |
     | 77431556  | 
     | 272081648 | 
+    
+ID:Accessories test 7-1.The user choose "productType" product type and when switching to the product sees "productType" type.
+1. Launch site "https://luch.by/en/accessories/"
+2. Choose "productType" movement of watches.
+3. Choose any watches and click "More info"
+4. Verfiy then movement of watches the "productType"
+
+Example: 
+    | productType |
+    | A bracelet  | 
+    | Wallet      | 
