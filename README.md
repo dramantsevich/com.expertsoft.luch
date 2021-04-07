@@ -165,11 +165,28 @@ Example:
     
 ID:Accessories test 7-1.The user choose "productType" product type and when switching to the product sees "productType" type.
 1. Launch site "https://luch.by/en/accessories/"
-2. Choose "productType" movement of watches.
+2. Choose "productType" of accessories.
 3. Choose any watches and click "More info"
-4. Verfiy then movement of watches the "productType"
+4. Verfiy then type of accessories the "productType"
 
 Example: 
     | productType |
     | A bracelet  | 
     | Wallet      | 
+    
+ID:Accessories test 7-2.The user choose "productColour" product colour and when switching to the product sees "productColour" colour.
+1. Launch site "https://luch.by/en/accessories/"
+2. Choose "productColour" of accessories.
+3. Choose any watches and click "More info"
+4. Verfiy then type of accessories the "productColour"
+
+Example: 
+    | productColour |
+    | Green         | 
+    | Marsal        | 
+    
+ID:Accessories test 7-3.The user choose type of sort "First popular" and see "First popular" accessories at the first.
+1. Launch site "https://luch.by/en/accessories/"
+2. Click to "Sort" button
+3. Choose "First popular" type of sort
+4. Verfiy "First popular" accessories at the first
