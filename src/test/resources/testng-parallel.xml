@@ -11,6 +11,7 @@
             <class name="test.FilterTests"/>
             <class name="test.SortTests"/>
             <class name="test.SearchTest"/>
+            <class name="test.AccessoriesTests"/>
         </classes>
     </test>
 </suite>
