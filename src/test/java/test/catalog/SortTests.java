@@ -1,17 +1,18 @@
-package test;
+package test.catalog;
 
 import static org.assertj.core.api.Assertions.*;
 
 import model.Product;
 import org.testng.annotations.Test;
 import page.CatalogPage;
-import page.CatalogWatchesPage;
+import page.catalog.CatalogWatchesPage;
+import test.CommonConditions;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class SortTests extends CommonConditions{
+public class SortTests extends CommonConditions {
     @Test
     public void CheckSortLowestFirst() throws Throwable {
         CatalogWatchesPage catalogWatchesPage = new CatalogWatchesPage()

@@ -1,13 +1,14 @@
-package page;
+package page.catalog;
 
 import model.Product;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
+import page.CatalogPage;
 
 import java.util.List;
 
-public class CatalogAccessoriesPage extends CatalogPage{
+public class CatalogAccessoriesPage extends CatalogPage {
     private final String BASE_URL = "https://luch.by/en/accessories/";
     private final Logger logger = LogManager.getRootLogger();
 

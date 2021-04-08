@@ -5,13 +5,13 @@
     <test name="Parallel testing">
         <classes>
             <class name="test.ProductTests" />
-            <class name="test.OrderNegativeTests"/>
+            <class name="test.order.OrderNegativeTests"/>
             <class name="test.OneClickOrderTests"/>
-            <class name="test.OrderPositiveTests"/>
-            <class name="test.FilterTests"/>
-            <class name="test.SortTests"/>
+            <class name="test.order.OrderPositiveTests"/>
+            <class name="test.catalog.FilterTests"/>
+            <class name="test.catalog.SortTests"/>
             <class name="test.SearchTest"/>
-            <class name="test.AccessoriesTests"/>
+            <class name="test.catalog.AccessoriesTests"/>
         </classes>
     </test>
 </suite>

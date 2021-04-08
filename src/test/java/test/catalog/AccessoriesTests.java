@@ -1,12 +1,13 @@
-package test;
+package test.catalog;
 
 import com.opencsv.exceptions.CsvException;
 import model.Product;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import page.CatalogAccessoriesPage;
+import page.catalog.CatalogAccessoriesPage;
 import page.CatalogPage;
 import page.ProductPage;
+import test.CommonConditions;
 import util.CustomDataProvider;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AccessoriesTests extends CommonConditions{
+public class AccessoriesTests extends CommonConditions {
     @Test(dataProvider = "TypeAccessoriesProvider")
     public void checkCorrectAccessroiesProductType(String accessoriesProductType) throws Throwable {
         CatalogPage catalogPage = new CatalogAccessoriesPage()
@@ -51,11 +52,11 @@ public class AccessoriesTests extends CommonConditions{
 
     @DataProvider(name = "TypeAccessoriesProvider")
     public Object [] getTypeData() throws IOException, CsvException {
-        return CustomDataProvider.readCsv("accessoriesProductType.csv");
+        return CustomDataProvider.readCsv("accessories/productType.csv");
     }
 
     @DataProvider(name = "ColourAccessoriesProvider")
     public Object [] getColourData() throws IOException, CsvException {
-        return CustomDataProvider.readCsv("accessoriesProductColour.csv");
+        return CustomDataProvider.readCsv("accessories/productColour.csv");
     }
 }

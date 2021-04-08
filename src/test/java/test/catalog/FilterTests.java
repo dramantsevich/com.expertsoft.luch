@@ -1,4 +1,4 @@
-package test;
+package test.catalog;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -6,13 +6,14 @@ import com.opencsv.exceptions.CsvException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.CatalogPage;
-import page.CatalogWatchesPage;
+import page.catalog.CatalogWatchesPage;
 import page.ProductPage;
+import test.CommonConditions;
 import util.CustomDataProvider;
 
 import java.io.IOException;
 
-public class FilterTests extends CommonConditions{
+public class FilterTests extends CommonConditions {
     @Test(dataProvider = "TypeFilterProvider")
     public void checkCorrectTypeFilter(String typeName) throws Throwable {
         CatalogPage catalogPage = new CatalogWatchesPage()

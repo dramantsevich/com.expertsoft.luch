@@ -1,4 +1,4 @@
-package test;
+package test.order;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -6,11 +6,12 @@ import model.User;
 import org.testng.annotations.Test;
 import page.*;
 import service.UserCreator;
+import test.PreConditionsForOrderTests;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class OrderNegativeTests extends PreConditionsForOrderTests{
+public class OrderNegativeTests extends PreConditionsForOrderTests {
     @Test(dependsOnGroups = {"ProductTests.checkCorrectAddToCart"})
     public void checkNotEnteredAllFieldsOnOrderedProduct() throws Throwable {
         int expectedCount = 5;

@@ -1,14 +1,16 @@
-package page;
+package page.catalog;
 
 import model.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import page.CatalogPage;
+import page.ProductPage;
 
 import java.util.List;
 
-public class CatalogWatchesPage extends CatalogPage{
+public class CatalogWatchesPage extends CatalogPage {
     private final String BASE_URL = "https://luch.by/en/watches/";
     private final String HIGHEST_FIRST_URL = "https://luch.by/en/watches/?sort=PRICE&order=asc";
 
