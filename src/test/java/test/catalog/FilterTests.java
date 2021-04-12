@@ -2,19 +2,17 @@ package test.catalog;
 
 import static org.assertj.core.api.Assertions.*;
 
-import com.opencsv.exceptions.CsvException;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.CatalogPage;
 import page.catalog.CatalogWatchesPage;
 import page.ProductPage;
 import test.CommonConditions;
-import util.CustomDataProvider;
+import util.DataProvider;
 
 import java.io.IOException;
 
 public class FilterTests extends CommonConditions {
-    @Test(dataProvider = "TypeFilterProvider")
+    @Test(dataProvider = "getTypeFilterData")
     public void checkCorrectTypeFilter(String typeName) throws Throwable {
         CatalogPage catalogPage = new CatalogWatchesPage()
                 .openPage()
@@ -27,7 +25,7 @@ public class FilterTests extends CommonConditions {
         assertThat(productPage.getGenderType().getText()).contains(typeName);
     }
 
-    @Test(dataProvider = "MovementFilterProvider")
+    @Test(dataProvider = "getMovementFilterData")
     public void checkCorrectMovementFilter(String movementName) throws Throwable {
         CatalogPage catalogPage = new CatalogWatchesPage()
                 .openPage()
@@ -38,13 +36,13 @@ public class FilterTests extends CommonConditions {
         assertThat(productPage.getMovementDescription().getText()).isEqualTo(movementName);
     }
 
-    @DataProvider(name = "TypeFilterProvider")
-    public Object [] getTypeData() throws IOException, CsvException {
-        return CustomDataProvider.readCsv("typeFilter.csv");
+    @org.testng.annotations.DataProvider
+    public Object[] getTypeFilterData() throws IOException {
+        return DataProvider.read("typeFilter");
     }
 
-    @DataProvider(name = "MovementFilterProvider")
-    public Object [] getMovementData() throws IOException, CsvException {
-        return CustomDataProvider.readCsv("movementFilter.csv");
+    @org.testng.annotations.DataProvider
+    public Object [] getMovementFilterData() throws IOException {
+        return DataProvider.read("movementFilter");
     }
 }
