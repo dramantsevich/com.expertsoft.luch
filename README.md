@@ -7,7 +7,7 @@ mvn -Dbrowser='browserName from DriverSingleton' -Denvironment='file.properties 
 mvn -Dbrowser=chrome -Denvironment=user -Dsurefire.suiteXmlFiles=src\test\resources\testng-parallel.xml clean test
 
 # To run allure-report:
-to command line: allure -serve allure-results
+to command line: allure serve target/allure-results
 
 # Test Cases:
 
